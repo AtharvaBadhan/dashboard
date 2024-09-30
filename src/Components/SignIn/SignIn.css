@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+body,
+html {
+  margin: 0;
+  height: 100%;
+  font-family: "Inria Sans", sans-serif;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(27 27 28);
+}
+.signin-container-left {
+  background-image: url(http://localhost:3000/static/media/15000134_5557528.e9fcb957b2af3a95e752.jpg);
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  margin: 15px 30px;
+  padding: 25px 50px;
+  width: 100%;
+  text-align: left;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+.signin-container-left h1{
+    margin-top: 142px;
+    font-size: clamp(1.875rem, 1.6558rem + 1.0628vw, 3.25rem);
+}
+.signin-container-left p{
+    font-size: clamp(1rem, 0.8804rem + 0.5797vw, 1.75rem);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 120px;
+  gap: 25px;
+  margin-bottom: 109px;
+}
+
+.button-google{
+
+        padding: 16px 36px;
+        font-size: clamp(0.75rem, 0.6902rem + 0.2899vw, 1.125rem);
+        border: 1px solid white;
+        background-color: #00000080;
+        color: white;
+        font-weight: 700;
+        border-radius: 5px;
+        cursor: pointer;
+}
+
+.signin-container-right {
+    width: 130%;
+    text-align: left;
+    color: white;
+  }
