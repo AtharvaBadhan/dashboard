@@ -12,7 +12,7 @@ html {
   background: rgb(27 27 28);
 }
 .signin-container-left {
-  background-image: url(http://localhost:3000/static/media/15000134_5557528.e9fcb957b2af3a95e752.jpg);
+  background-image: url('../../Assets/15000134_5557528.jpg');
   background-size: cover;
   background-position: center;
   color: #fff;
