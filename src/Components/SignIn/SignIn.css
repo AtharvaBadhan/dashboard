@@ -4,12 +4,14 @@ html {
   margin: 0;
   height: 100%;
   font-family: "Inria Sans", sans-serif;
+  background: rgb(27 27 28);
 }
 .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: rgb(27 27 28);
+  height: 100%;
 }
 .signin-container-left {
   background-image: url('../../Assets/15000134_5557528.jpg');
