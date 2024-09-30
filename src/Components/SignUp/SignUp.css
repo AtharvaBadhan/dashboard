@@ -59,6 +59,7 @@ html {
 }
 .content h2 {
   font-size: clamp(1.5rem, 1.2609rem + 1.1594vw, 3rem);
+  width: fit-content;
 
   line-height: 34px;
 }
@@ -80,15 +81,18 @@ html {
   flex-direction: column;
   margin-right: 125px;
   margin-bottom: 20px;
+  width: 65%;
 }
 
 .f-name input {
   margin-top: 10px;
-  height: 30px;
+  height: 35px;
   background: #ffffff1a;
   border: none;
   color: #fff;
+  border-radius: 5px;
 }
+
 .f-name input::placeholder {
   color: #ffffff66; /* Placeholder text color */
 }
@@ -119,7 +123,7 @@ html {
   margin-bottom: 20px;
 }
 .submit-button button {
-  padding: 20px 55px;
+  padding: 15px 55px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;

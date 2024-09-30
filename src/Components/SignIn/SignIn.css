@@ -6,6 +6,10 @@ html {
   font-family: "Inria Sans", sans-serif;
   background: rgb(27 27 28);
 }
+
+a{
+  color: #6772ea;
+}
 .container {
   display: flex;
   align-items: center;
@@ -14,7 +18,7 @@ html {
   height: 100vh;
 }
 .signin-container-left {
-  background-image: url(http://localhost:3000/static/media/15000134_5557528.e9fcb957b2af3a95e752.jpg);
+  background-image: url('../../Assets/15000134_5557528.jpg');
   background-size: cover;
   background-position: center;
   color: #fff;
@@ -48,7 +52,7 @@ html {
 .button-google{
 
         padding: 16px 36px;
-        font-size: calc(clamp(0.75rem, 1.342vw - 0.111rem, 1.5rem));
+        font-size: calc(clamp(0.625rem, 1.119vw - 0.092rem, 1.25rem));
         border: 1px solid white;
         background-color: #00000080;
         color: white;
@@ -66,7 +70,7 @@ html {
   flex-direction: column;
   justify-content: center;
 }
-  @media (max-width: 1920px){
+  /* @media (max-width: 1920px){
 
     .signin-container-left {
       margin: 60px;
@@ -112,6 +116,21 @@ html {
   padding: 0
 }
 }
+@media (max-width: 767px){}
+@media (max-width: 667px){}
+@media (max-width: 480px){}
+@media (max-width: 360px){} */
+
+@media (max-width: 1280px){
+  .signin-container-left {
+    margin: 15px 30px;
+    height: 90%;
+}
+.heading h2 {
+  width: fit-content;}
+}
+@media (max-width: 1199px){}
+@media (max-width: 991px){}
 @media (max-width: 767px){}
 @media (max-width: 667px){}
 @media (max-width: 480px){}

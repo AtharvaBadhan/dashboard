@@ -1,9 +1,45 @@
-import React from "react";
+import React, {useState} from "react";
 import './SignIn.css';
 import { Link } from "react-router-dom";
-import backgroundImg from "../../Assets/15000134_5557528.jpg";
+
 
 export default function SignIn(){
+  
+  const [formData, setFormData] = useState({});
+  const [errors, setErrors] = useState({});
+  
+  const handleChange = (e) => {
+    console.log(e.target)
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.email) {
+      newErrors.email = "Email is required.";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email format is invalid.";
+    }
+    if (!formData.password) {
+      newErrors.password = "Password is required.";
+    } else if (formData.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters.";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Returns true if no errors
+  }; 
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      // Proceed with signup logic
+      console.log("Form submitted:", formData);
+     
+      setErrors({});
+    }
+  };
+
+
     return(
         <div className="container">
             <div className="signin-container-left">
@@ -20,7 +56,7 @@ export default function SignIn(){
           <h2>Sign In</h2>
         </div>
             <div className="form-action">
-          <form >
+          <form onSubmit={handleSubmit}>
 
 
             <div className="f-name">
@@ -29,9 +65,10 @@ export default function SignIn(){
                 type="email"
                 id="email"
                 name="email"
-               
+                value={formData.email}
+                onChange={handleChange}
               />
-            
+            {errors.email && <span className="error">{errors.email}</span>}
             </div>
 
             <div className="f-name">
@@ -40,9 +77,10 @@ export default function SignIn(){
                 type="password"
                 id="password"
                 name="password"
-               
+                value={formData.password}
+                onChange={handleChange}
               />
-              
+              {errors.password && <span className="error">{errors.password}</span>}
             </div>
 
             <div className="checkbox-container">
