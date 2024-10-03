@@ -129,9 +129,50 @@ a{
 .heading h2 {
   width: fit-content;}
 }
-@media (max-width: 1199px){}
-@media (max-width: 991px){}
-@media (max-width: 767px){}
-@media (max-width: 667px){}
-@media (max-width: 480px){}
-@media (max-width: 360px){}
+@media (max-width: 1199px){
+
+  .content h1 {
+    margin-bottom: 65px !important;;
+}
+.content p {
+  margin-bottom: 68px !important;;
+}
+.submit-button button {
+  padding: 10px 50px !important;;
+}
+
+.heading{
+  line-height: 20px;
+}
+}
+@media (max-width: 720px){}
+@media (max-width: 480px){
+  .signin-container-left {
+    max-width: fit-content;
+}
+  .container{
+    flex-direction: column;
+  }
+  .buttons{
+    flex-direction: column;
+    gap: 30px;
+  }
+  .signin-container-right {
+    max-width: fit-content;
+    padding: 15px 40px;
+}
+.f-name {
+  margin-right: 0px !important;
+
+}
+
+.f-name input{
+  width: 250px;
+}
+.button-google{
+  width: 220px;
+}
+}
+@media (max-width: 360px){
+
+}

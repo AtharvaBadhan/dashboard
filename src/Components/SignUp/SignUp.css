@@ -140,3 +140,36 @@ html {
 .error {
   color: #e50f0f;
 }
+
+@media (max-width: 480px){
+  .container-right{
+    padding: 15px 30px;
+    width: auto;
+  }
+  .container-left {
+    max-width: fit-content;
+    padding: 15px 30px;
+}
+
+.inner-container{
+  width: fit-content;
+}
+}
+@media (max-width: 720px){
+  .content h2{
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .content p{
+    font-size: 16px;
+  }
+  .content h3{
+    font-size: 17px;
+  }
+  .buttons{
+    flex-direction: column;
+  }
+  .button-google {
+    width: 220px;
+  }
+}
