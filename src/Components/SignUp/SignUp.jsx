@@ -4,13 +4,39 @@ import backgroundImage from "../../Assets/15517704_5630939.jpg";
 import { Link } from "react-router-dom";
 
 export default function SignUp() {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  });
   const [errors, setErrors] = useState({});
   const [dataArray, setDataArray] = useState([]);
+  const [isTermsAccepted, setIsTermsAccepted] = useState(false);
+
   const handleChange = (e) => {
-    console.log(e.target)
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+    // Clear specific error messages on input change
+    if (name === "name" && errors.name) {
+      setErrors({ ...errors, name: null });
+    } else if (name === "email" && errors.email) {
+      setErrors({ ...errors, email: null });
+    } else if (name === "password" && errors.password) {
+      setErrors({ ...errors, password: null });
+    } else if (name === "confirmPassword" && errors.confirmPassword) {
+      setErrors({ ...errors, confirmPassword: null });
+    } else if (name === "create-account" && errors.terms) {
+      setErrors({ ...errors, terms: null });
+    }
+  };
+
+  const handleCheckboxChange = (e) => {
+    setIsTermsAccepted(e.target.checked);
+    if (errors.terms) {
+      setErrors({ ...errors, terms: null });
+    }
   };
 
   const validateForm = () => {
@@ -29,6 +55,9 @@ export default function SignUp() {
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match.";
     }
+    if (!isTermsAccepted) {
+      newErrors.terms = "You must accept the terms and conditions.";
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0; // Returns true if no errors
   };
@@ -36,18 +65,18 @@ export default function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Proceed with signup logic
       console.log("Form submitted:", formData);
-      setDataArray([...dataArray, formData]);
-      // Reset form
-
-      setFormData({ name: "", email: "", password: "", confirmPassword: "" });
-    
+      setDataArray(prevDataArray => [...prevDataArray, formData]);
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+      });
+      setIsTermsAccepted(false);
       setErrors({});
     }
-    const jsonData = JSON.stringify(dataArray);
-
-    console.log(jsonData);
+    console.log(dataArray);
   };
 
   return (
@@ -133,11 +162,14 @@ export default function SignUp() {
                 type="checkbox"
                 id="create-account"
                 name="create-account"
+                checked={isTermsAccepted}
+                onChange={handleCheckboxChange}
               />
               <label htmlFor="create-account">
                 Creating your account{" "}
                 <span>by accepting our terms and conditions.</span>
               </label>
+              {errors.terms && <p className="error">{errors.terms}</p>}
             </div>
             <div className="submit-button">
               <button type="submit">Sign Up</button>

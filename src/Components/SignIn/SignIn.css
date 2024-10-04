@@ -167,7 +167,7 @@ a{
 }
 
 .f-name input{
-  width: 250px;
+  width: 100%;
 }
 .button-google{
   width: 220px;
