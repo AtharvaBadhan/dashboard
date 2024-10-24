@@ -102,7 +102,7 @@ export default function SignUp() {
       <div className="container-right">
         <div className="heading">
           <h2>Hello, Welcome to ESDS.</h2>
-          <h2>Create Account</h2>
+          <h3>Create Account</h3>
         </div>
         <div className="form-action">
           <form onSubmit={handleSubmit}>

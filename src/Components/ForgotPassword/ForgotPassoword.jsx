@@ -3,14 +3,13 @@ import "./ForgotPassword.css";
 import { useNavigate } from "react-router-dom";
 import Close from '../../Assets/close-svgrepo-com.svg';
 
-
 export default function ForgotPassword() {
     const navigate = useNavigate();
 
   const handleClose = () => {
     navigate("/");
-
   };
+
   return (
     <div className="container-forgot">
       <div className="inner-box">

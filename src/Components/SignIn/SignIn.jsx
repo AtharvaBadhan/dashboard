@@ -69,7 +69,7 @@ export default function SignIn() {
       <div className="signin-container-right">
         <div className="heading">
           <h2>Hello, Welcome to ESDS.</h2>
-          <h2>Sign In</h2>
+          <h3>Sign In</h3>
         </div>
         <div className="form-action">
           <form onSubmit={handleSubmit}>

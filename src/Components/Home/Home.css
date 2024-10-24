@@ -6,18 +6,10 @@ html{
 .home-container{
     display: flex;
 }
-.home-sidebar {
-    padding: 15px 30px;
-    margin: 15px 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 88px;
-    margin-right: 0;
-    width: 10%;
-}
+
 
 .home-sidebar img{
-    width: 62%;
+    width: 100%;
 }
 
 .icons{
@@ -28,7 +20,7 @@ html{
 }
 
 .icons img{
-    width: 40%;
+    width: 50%;
     cursor: pointer;
 }
 .vr {
@@ -37,10 +29,14 @@ html{
     background-color: gray; /* Default color */
     transition: background-color 0.3s; /* Smooth transition */
 }
-
-.heading{
-    display: flex;  
+.heading1 {
+    display: flex;
     justify-content: space-between;
+}
+.heading {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 .home-middle-container{
     padding-left: 0;
@@ -71,7 +67,17 @@ html{
     width: 100%; /* Full width */
     outline: none;
 }
-
+.home-sidebar {
+    padding: 15px 30px;
+    margin: 15px 30px;
+    display: flex;
+    flex-direction: column;
+    /* gap: 88px; */
+    /* margin-right: 0; */
+    /* width: 10%; */
+    padding-left: 0;
+    margin-left: 0;
+}
 .search-icon {
     position: absolute;
     left: 10px; /* Space from the left */
@@ -85,7 +91,8 @@ html{
     width: 50%;
     padding: 15px;
     background: red;
-    border-radius: 16px
+    border-radius: 16px;
+    height: fit-content;
 }
 .projects p{
     margin: 4px 0;
@@ -150,7 +157,12 @@ html{
     background-color: white;
     display: flex;
     align-items: center;
-    height: 65px;
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+}
+.profile img{
+    height: 100%;
 }
 .home-right-container {
     padding: 15px 30px 15px 0;
@@ -160,7 +172,8 @@ html{
     align-items: flex-start;
 }
 
-.header{
+.header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    gap: 12px;
 }

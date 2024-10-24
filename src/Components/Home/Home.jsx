@@ -1,14 +1,13 @@
 import React, { useState } from "react";
+import Chart from "react-apexcharts";
 import Logo from "../../Assets/logo.svg";
 import HomeIcon from "../../Assets/home-icon.png";
 import DashboardIcon from "../../Assets/dashboard-icon.png";
 import MoneyIcon from "../../Assets/money-icon.png";
 import SearchIcon from "../../Assets/search-icon.png";
-import { CircularProgressbar } from "react-circular-progressbar";
-import { LineChart, Line, Tooltip } from "recharts";
 import "./Home.css";
 import Profile from "../../Assets/profile-icon.png";
-
+import SideBar from '../SideBar/SideBar';
 
 export default function Home() {
   const [selectedIcon, setSelectedIcon] = useState("home");
@@ -24,7 +23,6 @@ export default function Home() {
     setSelectedIcon(icon);
   };
 
-
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
@@ -34,41 +32,49 @@ export default function Home() {
     console.log("Search Query:", searchQuery);
   };
 
-  const [workData, setWorkData] = useState([
-    { name: "Day 1", uploads: 5 },
-    { name: "Day 2", uploads: 15 },
-    { name: "Day 3", uploads: 10 },
-    { name: "Day 4", uploads: 25 },
-    { name: "Day 5", uploads: 20 },
-  ]);
+  const totalProgress = projects.reduce((total, project) => total + project.progress, 0) / projects.length;
 
-  const totalWorkUploaded = 70;
-  const maxUploads = 100;
+  const chartOptions = {
+    chart: {
+      type: "radialBar",
+      height: 275,
+    },
+    plotOptions: {
+      radialBar: {
+        dataLabels: {
+          name: {
+            fontSize: "22px",
+          },
+          value: {
+            fontSize: "16px",
+          },
+          total: {
+            show: true,
+            label: "Total Progress",
+            formatter: () => Math.round(totalProgress), // Display the average project progress
+          },
+        },
+      },
+    },
+    labels: ["Total Progress"], // Single label for total progress
+  };
+
+  const chartSeries = [totalProgress]; // Only display the total progress
 
   return (
     <div className="home-container">
+      
       <div className="home-sidebar">
-        <img src={Logo} alt="logo" />
+        {/* <img src={Logo} alt="logo" />
         <div className="icons">
-          <img
-            src={HomeIcon}
-            alt="home"
-            onClick={() => handleIconClick("home")}
-          />
-          <img
-            src={DashboardIcon}
-            alt="dashboard"
-            onClick={() => handleIconClick("dashboard")}
-          />
-          <img
-            src={MoneyIcon}
-            alt="money"
-            onClick={() => handleIconClick("money")}
-          />
-        </div>
+          <img src={HomeIcon} alt="home" onClick={() => handleIconClick("home")} />
+          <img src={DashboardIcon} alt="dashboard" onClick={() => handleIconClick("dashboard")} />
+          <img src={MoneyIcon} alt="money" onClick={() => handleIconClick("money")} />
+        </div> */}
+       <SideBar />
       </div>
       <div className="home-middle-container">
-        <div className="heading">
+        <div className="heading1">
           <h1>Dashboard</h1>
           <form className="search-form" onSubmit={handleSearchSubmit}>
             <div className="search-input-container">
@@ -98,6 +104,7 @@ export default function Home() {
               </div>
             ))}
           </div>
+
           <div className="project-deadline">
             <div className="home-deadline">
               <div className="deadline">
@@ -115,35 +122,29 @@ export default function Home() {
                 <h3>Deadlines</h3>
               </div>
             </div>
-            <div className="total-task">
-              <div style={{ width: "150px", height: "150px" }}>
-                <CircularProgressbar
-                  value={(totalWorkUploaded / maxUploads) * 100}
-                  text={`${totalWorkUploaded} / ${maxUploads}`}
-                />
+            {/* Radial Bar Chart */}
+            <div className="col-lg-6">
+              <div className="card">
+                <div className="card-body">
+                  
+                  <Chart
+                    options={chartOptions}
+                    series={chartSeries}
+                    type="radialBar"
+                    height={275}
+                  />
+                </div>
               </div>
-              <LineChart
-                width={150}
-                height={100}
-                data={workData}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-              >
-                <Tooltip />
-                <Line type="monotone" dataKey="uploads" activeDot={{ r: 8 }} />
-              </LineChart>
-              <p> Last Updated <span> Today </span></p>
             </div>
           </div>
         </div>
-
-        {/* Middle container content */}
       </div>
       <div className="home-right-container">
         <div className="header">
-        <div className="profile">
+          <div className="profile">
             <img src={Profile} alt="profile" />
-        </div>
-        <h2>Unknown Person</h2>
+          </div>
+          <h2>Unknown Person</h2>
         </div>
         {/* Right container content */}
       </div>

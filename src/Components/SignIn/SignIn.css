@@ -47,20 +47,19 @@ a{
   margin-top: 120px;
   gap: 25px;
   margin-bottom: 109px;
+  flex-direction: column;
 }
 
-.button-google{
-
-        padding: 16px 36px;
-        font-size: calc(clamp(0.625rem, 1.119vw - 0.092rem, 1.25rem));
-        border: 1px solid white;
-        background-color: #00000080;
-        color: white;
-        font-weight: 700;
-        border-radius: 5px;
-        cursor: pointer;
+.button-google {
+  padding: 18px 130px;
+  font-size: calc(clamp(0.625rem, 1.119vw - 0.092rem, 1.25rem));
+  border: 1px solid white;
+  background-color: #00000080;
+  color: white;
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
 }
-
 .signin-container-right {
   width: 130%;
   text-align: left;
@@ -144,6 +143,11 @@ a{
 .heading{
   line-height: 20px;
 }
+.heading h3{
+  margin: 0px;
+  font-size: clamp(1.5rem, 1.2609rem + 1.1594vw, 3rem);
+}
+
 }
 @media (max-width: 720px){}
 @media (max-width: 480px){
