@@ -1,0 +1,1 @@
+export const UPDATE_NAVBAR = "UPDATE_NAVBAR"

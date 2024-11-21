@@ -5,19 +5,27 @@ import SignUp from './Components/SignUp/SignUp';
 import ForgotPassword from './Components/ForgotPassword/ForgotPassoword'; 
 import Home from './Components/Home/Home2';
 import Users from './Components/User/User';
-import Message from './Components/Message/Message';
+import Account from './Components/Account/Account';
+import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
+import Attendance from './Components/Attendance/Attendance'
+import 'primereact/resources/themes/lara-light-indigo/theme.css';  // Import PrimeReact theme
+import 'primereact/resources/primereact.min.css';                  // PrimeReact core styles
+
 const App = () => {
   return (
+    <PrimeReactProvider>
     <Router>
-      <Routes>
+      <Routes> 
         <Route path="/" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} /> 
         <Route path="/home" element={<Home />} />
         <Route path="/users" element={<Users />} />
-        <Route path="/messages" element={<Message />} />
-      </Routes>
+        <Route path="/account" element={<Account />} />
+        <Route path="/attendance" element={<Attendance />} />
+            </Routes>
     </Router>
+    </PrimeReactProvider>
   );
 };
 

@@ -1,22 +1,25 @@
-import { LuMessagesSquare } from "react-icons/lu";
 import React, { useState, useEffect } from "react";
 import "./SideBar.css";
 import Toggle from "../../Assets/navbar-logo.svg";
 import { Link } from "react-router-dom";
 import { TbLayoutDashboard } from "react-icons/tb";
 import { PiSignOutBold } from "react-icons/pi";
-import { MdQueryStats } from "react-icons/md";
 import Logo from "../../Assets/logo.svg";
-import { FaRegBookmark } from "react-icons/fa6";
-import { LuFiles } from "react-icons/lu";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa6";
 import { IoSearchOutline } from "react-icons/io5";
 import { FiMessageSquare } from "react-icons/fi";
 import Profile from "../../Assets/profile-img.png";
 import { BiMessageRounded } from "react-icons/bi";
+import { BsBank } from "react-icons/bs";
+import { SlUserFollowing } from "react-icons/sl";
+import { useDispatch } from "react-redux";
+import * as demoAction from "../../Redux/Actions/DemoActions";
 
 export default function SideBar() {
+  const [menuButton, setmenuButton] = useState(false);
+  let dispatch = useDispatch();
+
   useEffect(() => {
     const toggle = document.getElementById("header-toggle");
     const nav = document.getElementById("nav-bar");
@@ -28,10 +31,12 @@ export default function SideBar() {
     const showNavbar = () => {
       if (nav) nav.classList.toggle("show");
       if (toggle) toggle.classList.toggle("bx-x");
-      if (bodypd) bodypd.classList.toggle("body-pd");
+      // if (bodypd) bodypd.classList.toggle("body-pd");
       if (headerpd) headerpd.classList.toggle("body-pd");
       if (logo) logo.classList.toggle("active");
       if (content) content.classList.toggle("content");
+      setmenuButton(!menuButton);
+      dispatch({ type: demoAction.UPDATE_NAVBAR, payload: !menuButton });
     };
 
     if (toggle) {
@@ -43,22 +48,25 @@ export default function SideBar() {
         toggle.removeEventListener("click", showNavbar);
       }
     };
-  }, []);
+  }, [menuButton]);
 
-  useEffect(() => {
-    const linkColor = document.querySelectorAll(".nav_link");
+  let handleChangePage = (a) => {
+    let doc = document.querySelectorAll(".datalink");
+    doc.forEach((e) => {
+      e.classList.remove("active-1");
+    });
+    a.target.classList.add("active-1");
+  };
+  //Dropdown
+  const [notificationOpen, setNotificationOpen] = useState(false);
+  const [messageOpen, setMessageOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
 
-    const colorLink = function () {
-      linkColor.forEach((l) => l.classList.remove("active"));
-      this.classList.add("active");
-    };
-
-    linkColor.forEach((l) => l.addEventListener("click", colorLink));
-
-    return () => {
-      linkColor.forEach((l) => l.removeEventListener("click", colorLink));
-    };
-  }, []);
+  const toggleDropdown = (type) => {
+    if (type === "notification") setNotificationOpen(!notificationOpen);
+    if (type === "message") setMessageOpen(!messageOpen);
+    if (type === "profile") setProfileOpen(!profileOpen);
+  };
 
   return (
     <div id="body-pd" className="body-className">
@@ -80,171 +88,110 @@ export default function SideBar() {
                 title="Enter search keyword"
               />
               <button type="submit" title="Search">
-                {" "}
-                <IoSearchOutline />{" "}
+                <IoSearchOutline />
               </button>
             </form>
           </div>
           <nav className="header-nav ms-auto">
             <ul className="d-flex align-items-center">
+              {/* Notification Icon with Dropdown */}
               <li className="nav-item dropdown">
-                <a className="nav-link nav-icon" href="#">
+                <a
+                  className="nav-link nav-icon"
+                  href="#"
+                  onClick={() => toggleDropdown("notification")}
+                >
                   <IoMdNotificationsOutline className="side-icons" />
                   <span className="badge bg-primary badge-number">4</span>
                 </a>
+                {notificationOpen && (
+                  <div className="dropdown-menu dropdown-menu-end">
+                    <a href="#" className="dropdown-item">
+                      New comment on your post
+                    </a>
+                    <a href="#" className="dropdown-item">
+                      New like on your photo
+                    </a>
+                    <a href="#" className="dropdown-item">
+                      New follow request
+                    </a>
+                    <a href="#" className="dropdown-item">
+                      New message from John
+                    </a>
+                    <div className="dropdown-divider" />
+                    <a href="#" className="dropdown-item">
+                      View all notifications
+                    </a>
+                  </div>
+                )}
               </li>
+
+              {/* Message Icon with Dropdown */}
               <li className="nav-item dropdown">
-                <a className="nav-link nav-icon" href="#">
+                <a
+                  className="nav-link nav-icon"
+                  href="#"
+                  onClick={() => toggleDropdown("message")}
+                >
                   <BiMessageRounded className="side-icons" />
                   <span className="badge bg-danger badge-number">5</span>
                 </a>
+                {messageOpen && (
+                  <div className="dropdown-menu dropdown-menu-end">
+                    <a href="#" className="dropdown-item">
+                      Message from Maria
+                    </a>
+                    <a href="#" className="dropdown-item">
+                      Message from Anna
+                    </a>
+                    <a href="#" className="dropdown-item">
+                      Message from David
+                    </a>
+                    <a href="#" className="dropdown-item">
+                      Message from Sophie
+                    </a>
+                    <div className="dropdown-divider" />
+                    <a href="#" className="dropdown-item">
+                      Show all messages
+                    </a>
+                  </div>
+                )}
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                  <FiMessageSquare className="side-icons" />
-                  <span class="badge bg-success badge-number">3</span>
-                </a>
 
-                {/* <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-                  <li class="dropdown-header">
-                    You have 3 new messages
-                    <a href="#">
-                      <span class="badge rounded-pill bg-primary p-2 ms-2">
-                        View all
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-
-                  <li class="message-item">
-                    <a href="#">
-                      <img
-                        src="assets/img/messages-1.jpg"
-                        alt=""
-                        class="rounded-circle"
-                      />
-                      <div>
-                        <h4>Maria Hudson</h4>
-                        <p>
-                          Velit asperiores et ducimus soluta repudiandae labore
-                          officia est ut...
-                        </p>
-                        <p>4 hrs. ago</p>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-
-                  <li class="message-item">
-                    <a href="#">
-                      <img
-                        src="assets/img/messages-2.jpg"
-                        alt=""
-                        class="rounded-circle"
-                      />
-                      <div>
-                        <h4>Anna Nelson</h4>
-                        <p>
-                          Velit asperiores et ducimus soluta repudiandae labore
-                          officia est ut...
-                        </p>
-                        <p>6 hrs. ago</p>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-
-                  <li class="message-item">
-                    <a href="#">
-                      <img
-                        src="assets/img/messages-3.jpg"
-                        alt=""
-                        class="rounded-circle"
-                      />
-                      <div>
-                        <h4>David Muldon</h4>
-                        <p>
-                          Velit asperiores et ducimus soluta repudiandae labore
-                          officia est ut...
-                        </p>
-                        <p>8 hrs. ago</p>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-
-                  <li class="dropdown-footer">
-                    <a href="#">Show all messages</a>
-                  </li>
-                </ul> */}
-              </li>
-              <li class="nav-item dropdown pe-3">
+              {/* Profile Icon with Dropdown */}
+              <li className="nav-item dropdown pe-3">
                 <a
-                  class="nav-link nav-profile d-flex align-items-center pe-0"
+                  className="nav-link nav-profile d-flex align-items-center pe-0"
                   href="#"
-                  data-bs-toggle="dropdown"
+                  onClick={() => toggleDropdown("profile")}
                 >
-                  <img src={Profile} alt="Profile" class="rounded-circle" />
-                  <span class="d-none d-md-block dropdown-toggle ps-2">
+                  <img src={Profile} alt="Profile" className="rounded-circle" />
+                  <span className="d-none d-md-block dropdown-toggle ps-2">
                     K. Anderson
                   </span>
                 </a>
-
-                {/* <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
-
-          </ul> */}
+                {profileOpen && (
+                  <div className="dropdown-menu dropdown-menu-end">
+                    <div className="dropdown-header">
+                      <h6>Kevin Anderson</h6>
+                      <span>Web Designer</span>
+                    </div>
+                    <div className="dropdown-divider" />
+                    <a href="users-profile.html" className="dropdown-item">
+                      <i className="bi bi-person"></i> My Profile
+                    </a>
+                    <a href="account-settings.html" className="dropdown-item">
+                      <i className="bi bi-gear"></i> Account Settings
+                    </a>
+                    <a href="pages-faq.html" className="dropdown-item">
+                      <i className="bi bi-question-circle"></i> Need Help?
+                    </a>
+                    <div className="dropdown-divider" />
+                    <a href="#" className="dropdown-item">
+                      <i className="bi bi-box-arrow-right"></i> Sign Out
+                    </a>
+                  </div>
+                )}
               </li>
             </ul>
           </nav>
@@ -259,7 +206,13 @@ export default function SideBar() {
             </a>
             <div className="nav_list">
               <div className="nav_option">
-                <Link to="/home" className="nav_link active">
+                <Link
+                  to="/home"
+                  onClick={(i) => {
+                    handleChangePage(i);
+                  }}
+                  className="nav_link active-1 datalink"
+                >
                   <TbLayoutDashboard className="side-icons" />
                   <span className="nav_name" id="content">
                     Dashboard
@@ -267,24 +220,42 @@ export default function SideBar() {
                 </Link>
               </div>
               <div className="nav_option">
-                <Link to="/users" className="nav_link">
+                <Link
+                  to="/users"
+                  className="nav_link datalink"
+                  onClick={(i) => {
+                    handleChangePage(i);
+                  }}
+                >
                   <FaRegUser className="side-icons" />
                   <span className="nav_name">Users</span>
                 </Link>
               </div>
               <div className="nav_option">
-                <Link to="/messages" className="nav_link">
-                  <LuMessagesSquare className="side-icons" />
-                  <span className="nav_name">Messages</span>
+                <Link
+                  to="/account"
+                  className="nav_link datalink"
+                  onClick={(i) => {
+                    handleChangePage(i);
+                  }}
+                >
+                  <BsBank className="side-icons" />
+                  <span className="nav_name">Account</span>
                 </Link>
               </div>
               <div className="nav_option">
-                <Link to="/bookmark" className="nav_link">
-                  <FaRegBookmark className="side-icons" />
-                  <span className="nav_name">Bookmark</span>
+                <Link
+                  to="/attendance"
+                  className="nav_link datalink"
+                  onClick={(i) => {
+                    handleChangePage(i);
+                  }}
+                >
+                  <SlUserFollowing className="side-icons" />
+                  <span className="nav_name">Attendance</span>
                 </Link>
               </div>
-              <div className="nav_option">
+              {/* <div className="nav_option">
                 <Link to="/files" className="nav_link">
                   <LuFiles className="side-icons" />
                   <span className="nav_name">Files</span>
@@ -295,7 +266,7 @@ export default function SideBar() {
                   <MdQueryStats className="side-icons" />
                   <span className="nav_name">Stats</span>
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
           <Link to="/" className="nav_link">

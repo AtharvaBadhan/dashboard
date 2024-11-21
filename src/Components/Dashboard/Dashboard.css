@@ -7,7 +7,9 @@ html{
 .home-container {
     display: flex;
     width: 100%;
-   
+    padding-left: 100px;
+    margin-top: 60px;
+    padding-right: 20px;
 }
 
 
@@ -47,7 +49,11 @@ html{
  
     
 }
-
+.filter{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 14px;
+}
 .home-middle-container h1{
     color: white;
     margin-top: 0;
@@ -124,7 +130,7 @@ html{
     display: flex;
     justify-content: flex-start;
     margin-top: 35px;
-    gap: 25px;
+    /* gap: 25px; */
 }
 
 .min-dead{
@@ -132,18 +138,19 @@ html{
     justify-content: space-between;
     align-items: flex-end;
 }
-
+.project-newdiv{
+    padding-right: 25px;
+}
 
 .home-deadline {
     display: flex;
     justify-content: space-between;
-    /* gap: 46px; */
+    gap: 25px;
 }
 .card{
     background-color: #313133;
     border-radius: 5px;
     color: white;
-    height: 100%;
 }
 
 .apexcharts-xcrosshairs, .apexcharts-ycrosshairs {
@@ -156,12 +163,14 @@ html{
     background-color: #313133;
     padding: 20px;
     border-radius: 5px;
+    width: 100%;
 }
 
 .card-component-1{
     display: flex;
     gap: 25px;
     flex-direction: column;
+    padding-right: 25px;
 }
 .card-graph{
     margin-top: 25px;
@@ -169,6 +178,7 @@ html{
 .messeges{
     display: flex;
     gap: 25px;
+    
 }
 .total-task{
     background: white;
@@ -203,28 +213,27 @@ html{
     align-items: flex-start;
 }
 
-.header {
+.inner {
+    background-color: rgb(27 27 28);
+    color: white;
+    padding-right: 10px;
     display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
     align-items: center;
-    gap: 12px;
 }
-
-  .inner{
-   background-color:  rgb(27 27 28) ;
-   color: white;
-  }
 
   .home-open{
     position: relative;
-    left: -10%;
     transition: .5s;
+    padding-left: 220px;
   }
 
   .thisweek{
     background-color: #1F3BB3;
   }
 .table1{
-    width: 116vh;
+    width: 100%;
     margin-bottom: 1rem;
     vertical-align: top;
     height: 90%;
@@ -236,7 +245,7 @@ html{
   .project-task {
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    gap: 25px;
 }
   .performanceLine{
     display: block; 
@@ -274,14 +283,15 @@ button {
 }
 
 .datepicker {
-	width: 95%;
-	
+	width: 50%;
 	background-color: var(--c-bg-tertiary);
 	border-radius: 10px;
 	box-shadow: 0 0 2px 0 rgba(#000, .2), 0 5px 10px 0 rgba(#000, .1);
 	padding: 1rem;
 }
-
+.task-card{
+    width: 50%;
+}
 .datepicker-top {
 	margin-bottom: 1rem;
 }

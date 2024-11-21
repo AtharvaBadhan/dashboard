@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./User.css";
 import SideBar from "../SideBar/SideBar";
 import { FaGreaterThan, FaLessThan } from "react-icons/fa6";
@@ -9,12 +9,13 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { GoTrash } from "react-icons/go";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-
+import { BreadCrumb } from 'primereact/breadcrumb';
+import { useSelector } from "react-redux";
 
 export default function User() {
   // Data for table (initial state)
   const tableRef = useRef();
-
+  const demoState = useSelector(state => state.DemoState);
   const initialData = [
       { id: 1, name: "Vincent Williamson", age: 31, job: "iOS Developer", city: "Sinaai-Waas" },
       { id: 2, name: "Taylor Reyes", age: 22, job: "UI/UX Developer", city: "Baileux" },
@@ -59,6 +60,15 @@ export default function User() {
   const indexOfFirstEntry = indexOfLastEntry - entriesPerPage;
   const currentEntries = data.slice(indexOfFirstEntry, indexOfLastEntry);
 
+  useEffect(() => {
+    const add = document.getElementById("home-container")
+    if(demoState.navbar){
+      add.classList.add("home-open")
+    }else{
+      add.classList.remove("home-open")
+    }
+  })
+  
   // Change page handler
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -108,6 +118,7 @@ export default function User() {
       <div className="home-middle-container">
         <div className="inner">
           <h4>User's</h4>
+         
         </div>
         <div className="container outer-cont">
           <div className="row col-sm-12">

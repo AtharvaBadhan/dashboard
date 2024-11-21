@@ -5,18 +5,23 @@ import ApexCharts from "apexcharts";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { BsThreeDots } from "react-icons/bs";
-
+import { Calendar } from 'primereact/calendar';
+import { useSelector } from "react-redux";
 export default function Dashboard() {
   const [selectedIcon, setSelectedIcon] = useState("home");
   const [searchQuery, setSearchQuery] = useState("");
   const reportsChartRef = useRef(null); // Create a ref for the chart container
-
+  const demoState= useSelector(state => state.DemoState);
+  
   useEffect(() => {
     const add = document.getElementById("home-container");
-    if (add) {
-      add.classList.toggle("home-open");
+    if(demoState.navbar) {
+      add.classList.add("home-open")
+    }else {
+      add.classList.remove("home-open")
     }
-  }, []);
+    console.log(demoState);
+  }, [demoState]);
 
   const [projects, setProjects] = useState([
     { name: "Project 1", progress: 30 },
@@ -171,13 +176,15 @@ export default function Dashboard() {
   }, [reportsChartRef]);
 
   return (
+      
     <div className="home-container" id="home-container">
       <div className="home-middle-container">
         <div className="inner">
           <h4>Dashboard</h4>
         </div>
         <div className="project-details">
-          <div className="project-task col-lg-4">
+          <div className="project-task col-lg-5">
+            <div className='project-newdiv'>
             <div className="project-name">
               <h3>Ongoing Projects</h3>
               {projects.map((project, index) => (
@@ -192,6 +199,7 @@ export default function Dashboard() {
                   </div>
                 </div>
               ))}
+            </div>
             </div>
             <div className="card-component-1">
               <div className="home-deadline">
@@ -232,7 +240,8 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          <div className="project-deadline">
+          <div className="project-deadline col-lg-7">
+            
             <div className="messeges">
               <div className="datepicker">
                 <div className="datepicker-top">
@@ -250,6 +259,7 @@ export default function Dashboard() {
                       <FaChevronRight />
                     </button>
                   </div>
+                  
                 </div>
                 <div className="datepicker-calendar">
                   <span className="day">Mo</span>
@@ -296,7 +306,7 @@ export default function Dashboard() {
                   <button className="date faded">3</button>
                 </div>
               </div>
-              <div className="card col-lg-6">
+              <div className="card task-card">
                 <div className="filter">
                   <a className="icon" href="#" data-bs-toggle="dropdown">
                     <BsThreeDots />
@@ -328,15 +338,11 @@ export default function Dashboard() {
                   <h5 className="card-title">
                     Tasks <span>| Today's Task</span>
                   </h5>
-
-                  <div className="activity">
-                    
-                  </div>
                 </div>
               </div>
             </div>
-            <div className="card">
-              <div className="card-body">
+            <div className="card h-100">
+              <div className=" card-body ">
                 <h5 className="card-title">Upcoming Projects</h5>
                 <table className="table1 table-bordered">
                   <thead className='p-5'>
@@ -429,5 +435,6 @@ export default function Dashboard() {
         </div>
       </div>
     </div>
+     
   );
 }

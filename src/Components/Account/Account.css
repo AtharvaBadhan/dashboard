@@ -1,0 +1,64 @@
+.payroll-details {
+    background-color: #313133; 
+    border-radius: 5px; 
+    padding: 30px; 
+    display: flex; 
+    justify-content: space-between; 
+    margin: 25px 0; 
+}
+.salary-details{
+    display: flex;
+    margin-bottom: 25px;
+}
+.payroll-date{
+    display: flex;
+    flex-direction: row;
+    margin-bottom:45px;
+    gap: 8px;
+}
+.payroll-date p{
+    margin-bottom: 6px;
+}
+.payroll-amount{
+    display: flex;
+    gap: 100px;
+}
+.payment-table{
+    font-size: 19px;
+    line-height: 77px;
+    border: 1px solid;
+    margin-top: 16px;
+}
+.payroll-day{
+    font-size: 36px;
+    margin: 0;
+}
+.payroll-pay-day{
+    margin: 0;
+}
+.pay-day{
+    text-align: center;
+}
+
+.payroll-tax{
+    font-weight: 700;
+}
+.payroll-taxation{
+    display: flex;
+    gap: 100px;
+}
+.data-table{
+    font-size: 16px;
+    line-height: 31px;
+}
+.salary-table{
+    background-color: transparent !important;
+    border-radius: 5px;
+    height: 85%;
+}
+.salary-layout{
+    padding-right: 25px;
+}
+.previous-pay-table{
+    padding-right: 25px;
+}
