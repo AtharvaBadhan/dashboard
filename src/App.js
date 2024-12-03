@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignIn from './Components/SignIn/SignIn';
 import SignUp from './Components/SignUp/SignUp';
@@ -10,9 +10,20 @@ import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
 import Attendance from './Components/Attendance/Attendance'
 import 'primereact/resources/themes/lara-light-indigo/theme.css';  // Import PrimeReact theme
 import 'primereact/resources/primereact.min.css';                  // PrimeReact core styles
+import { useSelector } from 'react-redux';
 
 const App = () => {
+  const demoState= useSelector(state => state.DemoState);
+  useEffect(() => {
+    let change = document.querySelector(".classChange");
+    if(demoState.themechange){
+    change.classList.add("toggleMode")
+  } else{
+    change.classList.remove("toggleMode")
+  } 
+  }, [demoState]);
   return (
+    <div className="classChange">
     <PrimeReactProvider>
     <Router>
       <Routes> 
@@ -26,6 +37,7 @@ const App = () => {
             </Routes>
     </Router>
     </PrimeReactProvider>
+    </div>
   );
 };
 

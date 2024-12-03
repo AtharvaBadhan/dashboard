@@ -15,10 +15,39 @@ import { BsBank } from "react-icons/bs";
 import { SlUserFollowing } from "react-icons/sl";
 import { useDispatch } from "react-redux";
 import * as demoAction from "../../Redux/Actions/DemoActions";
+import { useSelector } from "react-redux";
 
 export default function SideBar() {
   const [menuButton, setmenuButton] = useState(false);
+  const [darkMode, setDarkMode] = useState(false); // State to control dark mode
   let dispatch = useDispatch();
+
+  // Load dark mode setting from localStorage when the component is mounted
+  useEffect(() => {
+    const savedDarkMode = localStorage.getItem("darkMode");
+    if (savedDarkMode === "true") {
+      setDarkMode(true);
+      document.body.classList.add("dark-mode");
+    } else {
+      setDarkMode(false);
+      document.body.classList.remove("dark-mode");
+    }
+  }, []);
+
+  // Toggle dark mode and save preference to localStorage
+  const handleDarkModeToggle = () => {
+    const newDarkModeState = !darkMode;
+    setDarkMode(newDarkModeState);
+     
+    localStorage.setItem("darkMode", newDarkModeState.toString());
+    // dispatch({ type: demoAction.UPDATE_THEMECHANGE, payload: !darkMode });
+     
+    if (newDarkModeState) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  };
 
   useEffect(() => {
     const toggle = document.getElementById("header-toggle");
@@ -49,7 +78,7 @@ export default function SideBar() {
       }
     };
   }, [menuButton]);
-
+  
   let handleChangePage = (a) => {
     let doc = document.querySelectorAll(".datalink");
     doc.forEach((e) => {
@@ -57,16 +86,8 @@ export default function SideBar() {
     });
     a.target.classList.add("active-1");
   };
-  //Dropdown
-  const [notificationOpen, setNotificationOpen] = useState(false);
-  const [messageOpen, setMessageOpen] = useState(false);
-  const [profileOpen, setProfileOpen] = useState(false);
 
-  const toggleDropdown = (type) => {
-    if (type === "notification") setNotificationOpen(!notificationOpen);
-    if (type === "message") setMessageOpen(!messageOpen);
-    if (type === "profile") setProfileOpen(!profileOpen);
-  };
+  const demoState = useSelector((state) => state.DemoState);
 
   return (
     <div id="body-pd" className="body-className">
@@ -94,23 +115,75 @@ export default function SideBar() {
           </div>
           <nav className="header-nav ms-auto">
             <ul className="d-flex align-items-center">
+              <div className="btn">
+                {/* Dark mode toggle button */}
+                <svg display="none">
+	<symbol id="light" viewBox="0 0 24 24">
+		<g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+			<line x1="12" y1="17" x2="12" y2="20" transform="rotate(0,12,12)" />
+			<line x1="12" y1="17" x2="12" y2="20" transform="rotate(45,12,12)" />
+			<line x1="12" y1="17" x2="12" y2="20" transform="rotate(90,12,12)" />
+			<line x1="12" y1="17" x2="12" y2="20" transform="rotate(135,12,12)" />
+			<line x1="12" y1="17" x2="12" y2="20" transform="rotate(180,12,12)" />
+			<line x1="12" y1="17" x2="12" y2="20" transform="rotate(225,12,12)" />
+			<line x1="12" y1="17" x2="12" y2="20" transform="rotate(270,12,12)" />
+			<line x1="12" y1="17" x2="12" y2="20" transform="rotate(315,12,12)" />
+		</g>
+		<circle fill="currentColor" cx="12" cy="12" r="5" />
+	</symbol>
+	<symbol id="dark" viewBox="0 0 24 24">
+		<path fill="currentColor" d="M15.1,14.9c-3-0.5-5.5-3-6-6C8.8,7.1,9.1,5.4,9.9,4c0.4-0.8-0.4-1.7-1.2-1.4C4.6,4,1.8,7.9,2,12.5c0.2,5.1,4.4,9.3,9.5,9.5c4.5,0.2,8.5-2.6,9.9-6.6c0.3-0.8-0.6-1.7-1.4-1.2C18.6,14.9,16.9,15.2,15.1,14.9z" />
+	</symbol>
+</svg>
+                <label className="switch">
+                  <input
+                    className="switch__input"
+                    type="checkbox"
+                    role="switch"
+                    checked={darkMode}  // This ensures the toggle reflects the current state
+                    onChange={handleDarkModeToggle}
+                  />
+                  <span className="switch__inner"></span>
+                  <span className="switch__inner-icons">
+                    <svg
+                      className="switch__icon"
+                      width="24px"
+                      height="24px"
+                      aria-hidden="true"
+                    >
+                      <use href="#light" />
+                    </svg>
+                    <svg
+                      className="switch__icon"
+                      width="24px"
+                      height="24px"
+                      aria-hidden="true"
+                    >
+                      <use href="#dark" />
+                    </svg>
+                  </span>
+                  <span className="switch__sr">Dark Mode</span>
+                </label>
+
+              </div>
               {/* Notification Icon with Dropdown */}
               <li className="nav-item dropdown">
-                <a
-                  className="nav-link nav-icon"
-                  href="#"
-                  onClick={() => toggleDropdown("notification")}
-                >
+                <a className="nav-link nav-icon" href="#">
                   <IoMdNotificationsOutline className="side-icons" />
-                  <span className="badge bg-primary badge-number">4</span>
+                  <span className="badge bg-primary badge-number">5</span>
                 </a>
-                {notificationOpen && (
-                  <div className="dropdown-menu dropdown-menu-end">
+
+                <div className="dropdown-padding">
+                  <div className="dropdown-menu dropdown-menu-custom dropdown-menu-end">
+                    <div className="dropdown-header">
+                      <h6>Notification</h6>
+                    </div>
+                    <div className="dropdown-divider" />
                     <a href="#" className="dropdown-item">
-                      New comment on your post
+                      Project added to our work logs.
                     </a>
                     <a href="#" className="dropdown-item">
-                      New like on your photo
+                      Salary credited to your Account.
                     </a>
                     <a href="#" className="dropdown-item">
                       New follow request
@@ -123,21 +196,22 @@ export default function SideBar() {
                       View all notifications
                     </a>
                   </div>
-                )}
+                </div>
               </li>
 
               {/* Message Icon with Dropdown */}
               <li className="nav-item dropdown">
-                <a
-                  className="nav-link nav-icon"
-                  href="#"
-                  onClick={() => toggleDropdown("message")}
-                >
+                <a className="nav-link nav-icon" href="#">
                   <BiMessageRounded className="side-icons" />
-                  <span className="badge bg-danger badge-number">5</span>
+                  <span className="badge bg-danger badge-number">2</span>
                 </a>
-                {messageOpen && (
-                  <div className="dropdown-menu dropdown-menu-end">
+
+                <div className="dropdown-padding">
+                  <div className="dropdown-menu dropdown-menu-custom dropdown-menu-end">
+                    <div className="dropdown-header">
+                      <h6>Messages</h6>
+                    </div>
+                    <div className="dropdown-divider" />
                     <a href="#" className="dropdown-item">
                       Message from Maria
                     </a>
@@ -155,7 +229,7 @@ export default function SideBar() {
                       Show all messages
                     </a>
                   </div>
-                )}
+                </div>
               </li>
 
               {/* Profile Icon with Dropdown */}
@@ -163,15 +237,15 @@ export default function SideBar() {
                 <a
                   className="nav-link nav-profile d-flex align-items-center pe-0"
                   href="#"
-                  onClick={() => toggleDropdown("profile")}
                 >
                   <img src={Profile} alt="Profile" className="rounded-circle" />
                   <span className="d-none d-md-block dropdown-toggle ps-2">
                     K. Anderson
                   </span>
                 </a>
-                {profileOpen && (
-                  <div className="dropdown-menu dropdown-menu-end">
+
+                <div className="dropdown-padding">
+                  <div className="dropdown-menu dropdown-menu-custom dropdown-menu-end">
                     <div className="dropdown-header">
                       <h6>Kevin Anderson</h6>
                       <span>Web Designer</span>
@@ -187,11 +261,11 @@ export default function SideBar() {
                       <i className="bi bi-question-circle"></i> Need Help?
                     </a>
                     <div className="dropdown-divider" />
-                    <a href="#" className="dropdown-item">
+                    <a href="/" className="dropdown-item">
                       <i className="bi bi-box-arrow-right"></i> Sign Out
                     </a>
                   </div>
-                )}
+                </div>
               </li>
             </ul>
           </nav>
@@ -255,18 +329,6 @@ export default function SideBar() {
                   <span className="nav_name">Attendance</span>
                 </Link>
               </div>
-              {/* <div className="nav_option">
-                <Link to="/files" className="nav_link">
-                  <LuFiles className="side-icons" />
-                  <span className="nav_name">Files</span>
-                </Link>
-              </div>
-              <div className="nav_option">
-                <Link to="/stats" className="nav_link">
-                  <MdQueryStats className="side-icons" />
-                  <span className="nav_name">Stats</span>
-                </Link>
-              </div> */}
             </div>
           </div>
           <Link to="/" className="nav_link">

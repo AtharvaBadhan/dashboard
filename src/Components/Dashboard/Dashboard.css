@@ -1,8 +1,4 @@
-body,
-html{
-    color: white;
-    
-}
+
 
 .home-container {
     display: flex;
@@ -97,20 +93,20 @@ html{
     height: 20px; /* Adjust size as needed */
     pointer-events: none; /* Prevents icon from interfering with input clicks */
 }
-.project-name{
-    
+.project-name {
     padding: 15px;
-    background-color:#313133;
+    background-color: #313133;
     border-radius: 5px;
-    height: fit-content;
+    height: 281px;
 }
 .projects p{
     margin: 4px 0;
 }
-.progess{
+.progess {
     display: flex;
     gap: 24px;
     align-items: center;
+    justify-content: space-between;
 }
 .progress-bar-container {
     width: 100%; /* Full width */
@@ -214,13 +210,13 @@ html{
 }
 
 .inner {
-    background-color: rgb(27 27 28);
     color: white;
     padding-right: 10px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
     align-items: center;
+    background: transparent;
 }
 
   .home-open{

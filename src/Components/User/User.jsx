@@ -49,76 +49,72 @@ export default function User() {
       { id: 30, name: "Henry Carter", age: 34, job: "Full Stack Developer", city: "Las Vegas" },
   ];  
  
-  // State to hold table data
   const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState(initialData);
   const [currentPage, setCurrentPage] = useState(1);
   const entriesPerPage = 10;
- const input = document.getElementById('initialData');
-  // Calculate indices for slicing data
-  const indexOfLastEntry = currentPage * entriesPerPage;
-  const indexOfFirstEntry = indexOfLastEntry - entriesPerPage;
-  const currentEntries = data.slice(indexOfFirstEntry, indexOfLastEntry);
 
-  useEffect(() => {
-    const add = document.getElementById("home-container")
-    if(demoState.navbar){
-      add.classList.add("home-open")
-    }else{
-      add.classList.remove("home-open")
-    }
-  })
-  
-  // Change page handler
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  // Filtered data based on search term
   const filteredData = data.filter((entry) =>
     Object.values(entry).some((value) =>
       String(value).toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
 
+  // Calculate indices for pagination (based on filtered data)
+  const indexOfLastEntry = currentPage * entriesPerPage;
+  const indexOfFirstEntry = indexOfLastEntry - entriesPerPage;
+  const currentEntries = filteredData.slice(indexOfFirstEntry, indexOfLastEntry);
 
-  const totalPages = Math.ceil(data.length / entriesPerPage);
+  useEffect(() => {
+    const add = document.getElementById("home-container");
+    if (demoState.navbar) {
+      add.classList.add("home-open");
+    } else {
+      add.classList.remove("home-open");
+    }
+  });
+
+  // Change page handler
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const totalPages = Math.ceil(filteredData.length / entriesPerPage);
 
   const handleDelete = (id) => {
-   
     const updatedData = data.filter((entry) => entry.id !== id);
     setData(updatedData);
 
-    
     if (currentPage > Math.ceil(updatedData.length / entriesPerPage)) {
       setCurrentPage(Math.ceil(updatedData.length / entriesPerPage));
     }
   };
 
-    const exportPDF = () => {
-      const doc = new jsPDF();
-      const tableColumn = ["ID", "Name", "Age", "Job Title", "City"];
-      const tableRows = [];
-  
-      initialData.forEach((item) => {
-        const data = [item.id, item.name, item.age, item.job, item.city];
-        tableRows.push(data);
-      });
-  
-      
-      doc.autoTable({
-        head: [tableColumn],
-        body: tableRows,
-      });
-  
-      doc.save("table.pdf"); 
-    };
-  
+  const exportPDF = () => {
+    const doc = new jsPDF();
+    const tableColumn = ["ID", "Name", "Age", "Job Title", "City"];
+    const tableRows = [];
+
+    initialData.forEach((item) => {
+      const data = [item.id, item.name, item.age, item.job, item.city];
+      tableRows.push(data);
+    });
+
+    doc.autoTable({
+      head: [tableColumn],
+      body: tableRows,
+    });
+
+    doc.save("table.pdf");
+  };
+
   return (
     <div className="home-container" id="home-container">
       <SideBar />
       <div className="home-middle-container">
         <div className="inner">
           <h4>User's</h4>
-         
         </div>
         <div className="container outer-cont">
           <div className="row col-sm-12">
@@ -133,8 +129,13 @@ export default function User() {
                     </div>
                     <div className="col-sm-9 col-xs-12 text-right">
                       <div className="btn_group table-btn">
-                        <input type="text" className="form-control" placeholder="Search" value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}/>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Search"
+                          value={searchTerm}
+                          onChange={(e) => setSearchTerm(e.target.value)}
+                        />
                         <button className="btn btn-default" title="Reload">
                           <LuRefreshCcw />
                         </button>
@@ -194,13 +195,13 @@ export default function User() {
                 <div className="panel-footer">
                   <div className="row">
                     <div className="col col-sm-6 col-xs-6">
-                      Displaing <b>{currentEntries.length}</b> out of <b>{data.length}</b> Entries
+                      Displaying <b>{currentEntries.length}</b> out of <b>{filteredData.length}</b> Entries
                     </div>
                     <div className="col-sm-6 col-xs-6">
                       <ul className="pagination hidden-xs pull-right">
                         <li>
                           <button
-                          className="pagination-btn"
+                            className="pagination-btn"
                             disabled={currentPage === 1}
                             onClick={() => handlePageChange(currentPage - 1)}
                           >
@@ -208,15 +209,21 @@ export default function User() {
                           </button>
                         </li>
                         {[...Array(totalPages)].map((_, pageNumber) => (
-                          <li key={pageNumber} className={currentPage === pageNumber + 1 ? "active" : ""}>
-                            <button onClick={() => handlePageChange(pageNumber + 1)} className="pagination-btn">
+                          <li
+                            key={pageNumber}
+                            className={currentPage === pageNumber + 1 ? "active" : ""}
+                          >
+                            <button
+                              onClick={() => handlePageChange(pageNumber + 1)}
+                              className="pagination-btn"
+                            >
                               {pageNumber + 1}
                             </button>
                           </li>
                         ))}
                         <li>
                           <button
-                          className="pagination-btn"
+                            className="pagination-btn"
                             disabled={currentPage === totalPages}
                             onClick={() => handlePageChange(currentPage + 1)}
                           >
@@ -233,4 +240,5 @@ export default function User() {
         </div>
       </div>
     </div>
-  );}
+  );
+}

@@ -7,9 +7,10 @@
     
 }
 .outer-cont{
-        align-items: center;
+    align-items: flex-start !important;
         margin: 0px;
         padding: 0px;
+    background: transparent;
 }
 
 .panel .panel-heading{
