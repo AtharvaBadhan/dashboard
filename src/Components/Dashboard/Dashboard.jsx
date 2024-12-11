@@ -7,6 +7,8 @@ import { FaChevronRight } from "react-icons/fa";
 import { BsThreeDots } from "react-icons/bs";
 import { Calendar } from 'primereact/calendar';
 import { useSelector } from "react-redux";
+
+
 export default function Dashboard() {
   const [selectedIcon, setSelectedIcon] = useState("home");
   const [searchQuery, setSearchQuery] = useState("");
@@ -205,22 +207,22 @@ export default function Dashboard() {
               <div className="home-deadline">
                 <div className="deadline">
                   <div className="min-dead">
-                    <h2>30</h2>
-                    <p>+3</p>
+                    <h2 className="no-of-days-1">30</h2>
+                    <p>+3 Days</p>
                   </div>
                   <h5>Deadlines</h5>
                 </div>
                 <div className="deadline">
                   <div className="min-dead">
-                    <h2>30</h2>
-                    <p>+3</p>
+                    <h2 className="no-of-days-2">30</h2>
+                    <p>+3 Days</p>
                   </div>
                   <h5>Deadlines</h5>
                 </div>
                 <div className="deadline">
                   <div className="min-dead">
-                    <h2>30</h2>
-                    <p>+3</p>
+                    <h2 className="no-of-days-3">30</h2>
+                    <p>+3 Days</p>
                   </div>
                   <h5>Deadlines</h5>
                 </div>
@@ -336,7 +338,7 @@ export default function Dashboard() {
 
                 <div className="card-body">
                   <h5 className="card-title">
-                    Tasks <span>| Today's Task</span>
+                    Tasks |<span> Today's Task</span>
                   </h5>
                 </div>
               </div>
@@ -426,7 +428,7 @@ export default function Dashboard() {
 
             <div className="card-body">
               <h5 className="card-title">
-                Reports <span>/Today</span>
+                Reports /<span> Today</span>
               </h5>
 
               <div ref={reportsChartRef}></div>

@@ -4,8 +4,10 @@
     display: flex;
     width: 100%;
     padding-left: 100px;
-    margin-top: 60px;
+    margin-top: 48px;
     padding-right: 20px;
+    height: 100%;
+
 }
 
 
@@ -42,7 +44,7 @@
 
 .home-middle-container {
     width: 100%;
- 
+    background-color: #FFF;
     
 }
 .filter{
@@ -133,11 +135,39 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    width: 110%;
+}
+
+.min-dead p{
+    color:rgb(19, 201, 19);
+}
+.no-of-days-1{
+    color: #1F3BB3;
+    font-weight: 600;
+}
+.no-of-days-2{
+    color: #d32424;
+    font-weight: 600;
+}
+.no-of-days-3{
+    color: #c96c20;
+    font-weight: 600;
+}
+.card-title{
+    color: black;
+}
+.card-title span{
+    color: #d32424;
 }
 .project-newdiv{
     padding-right: 25px;
 }
-
+.card-body h5{
+    color: #000;
+}
+.card h5{
+    color: #000;
+}
 .home-deadline {
     display: flex;
     justify-content: space-between;
@@ -210,15 +240,18 @@
 }
 
 .inner {
-    color: white;
+    color: black;
     padding-right: 10px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
     align-items: center;
     background: transparent;
+    margin-top: 25px;
 }
-
+.inner h4{
+    font-weight: 600;
+}
   .home-open{
     position: relative;
     transition: .5s;

@@ -16,6 +16,7 @@ import { SlUserFollowing } from "react-icons/sl";
 import { useDispatch } from "react-redux";
 import * as demoAction from "../../Redux/Actions/DemoActions";
 import { useSelector } from "react-redux";
+import { HiOutlineBars3 } from "react-icons/hi2";
 
 export default function SideBar() {
   const [menuButton, setmenuButton] = useState(false);
@@ -92,8 +93,8 @@ export default function SideBar() {
   return (
     <div id="body-pd" className="body-className">
       <header className="header" id="header">
-        <div className="header_toggle">
-          <img src={Toggle} alt="toggle" id="header-toggle" />
+        <div className="header_toggle" alt="toggle" id="header-toggle">
+        <HiOutlineBars3  className="side-icons"/>
         </div>
         <div className="navbar-search">
           <div className="search-bar">
@@ -115,8 +116,8 @@ export default function SideBar() {
           </div>
           <nav className="header-nav ms-auto">
             <ul className="d-flex align-items-center">
-              <div className="btn">
-                {/* Dark mode toggle button */}
+              {/* <div className="btn">
+                
                 <svg display="none">
 	<symbol id="light" viewBox="0 0 24 24">
 		<g stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -165,7 +166,7 @@ export default function SideBar() {
                   <span className="switch__sr">Dark Mode</span>
                 </label>
 
-              </div>
+              </div> */}
               {/* Notification Icon with Dropdown */}
               <li className="nav-item dropdown">
                 <a className="nav-link nav-icon" href="#">

@@ -27,7 +27,7 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem 0 70px;
-  background-color: #FFF;
+  background-color:  #fff;
   z-index: var(--z-fixed);
   transition: 0.5s;
 }
@@ -66,10 +66,10 @@ a {
   padding: 0.5rem 1rem 0 0;
   transition: 0.5s;
   z-index: var(--z-fixed);
-  background: #1b1b1c;
-  -webkit-box-shadow: inset 28px 3px 46px -35px rgba(27,27,28,1);
+  background: #fff;
+  /* -webkit-box-shadow: inset 28px 3px 46px -35px rgba(27,27,28,1);
 -moz-box-shadow: inset 28px 3px 46px -35px rgba(27,27,28,1);
-box-shadow: inset 28px 3px 46px -35px rgba(27,27,28,1);
+box-shadow: inset 28px 3px 46px -35px rgba(27,27,28,1); */
 }
 
 .nav {
@@ -79,7 +79,7 @@ box-shadow: inset 28px 3px 46px -35px rgba(27,27,28,1);
   align-items: flex-start;
 }
 .nav_name {
-  color: #eeeeee;
+  color: black;
   padding: 0;
 }
 
@@ -187,7 +187,7 @@ box-shadow: inset 28px 3px 46px -35px rgba(27,27,28,1);
 .side-icons {
   pointer-events: none;
   font-size: 31px;
-  color: #eeeeee;
+  color: black;
 }
 
 .body-class {
@@ -234,6 +234,7 @@ box-shadow: inset 28px 3px 46px -35px rgba(27,27,28,1);
 .header-nav .nav-profile span {
   font-size: 14px;
   font-weight: 600;
+  color: black;
 }
 
 .header-nav .badge-number {
@@ -371,11 +372,7 @@ box-shadow: inset 28px 3px 46px -35px rgba(27,27,28,1);
   padding-bottom: 0;
   top: 8px !important;
 }
-.header-nav .nav-profile span {
-  font-size: 14px;
-  color: white;
-  font-weight: 600;
-}
+
 .header-nav .profile .dropdown-header h6 {
   font-size: 18px;
   margin-bottom: 0;
@@ -447,8 +444,8 @@ box-shadow: inset 28px 3px 46px -35px rgba(27,27,28,1);
 }
 
 body {
-  background-color: #fff;
-  color: #fff;
+  background-color:  #fff;
+  color: black;
   transition: background-color var(--trans-dur), color var(--trans-dur);
   position: relative;
   font-family: var(--body-font);
