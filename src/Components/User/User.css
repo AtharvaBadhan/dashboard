@@ -62,10 +62,11 @@
     font-size: 15px;
     font-weight: 500;
 }
-.panel .panel-body{ padding: 0; }
+.panel .panel-body{ padding: 0;
+    background-color: #0057d3; }
 .panel .panel-body .table thead tr th{
     color: #fff;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #0057d3;
     font-size: 16px;
     font-weight: 500;
     text-transform: uppercase;

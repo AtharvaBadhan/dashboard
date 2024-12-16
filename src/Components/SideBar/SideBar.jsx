@@ -4,7 +4,7 @@ import Toggle from "../../Assets/navbar-logo.svg";
 import { Link } from "react-router-dom";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { PiSignOutBold } from "react-icons/pi";
-import Logo from "../../Assets/logo.svg";
+import Logo from "../../Assets/logo.png";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa6";
 import { IoSearchOutline } from "react-icons/io5";
@@ -213,16 +213,16 @@ export default function SideBar() {
                     </div>
                     <div className="dropdown-divider" />
                     <a href="#" className="dropdown-item">
-                      Message from Maria
+                      Message from Meghna
                     </a>
                     <a href="#" className="dropdown-item">
                       Message from Anna
                     </a>
                     <a href="#" className="dropdown-item">
-                      Message from David
+                      Message from Manoj
                     </a>
                     <a href="#" className="dropdown-item">
-                      Message from Sophie
+                      Message from Atharva
                     </a>
                     <div className="dropdown-divider" />
                     <a href="#" className="dropdown-item">
@@ -240,14 +240,14 @@ export default function SideBar() {
                 >
                   <img src={Profile} alt="Profile" className="rounded-circle" />
                   <span className="d-none d-md-block dropdown-toggle ps-2">
-                    K. Anderson
+                    M. Salunkhe
                   </span>
                 </a>
 
                 <div className="dropdown-padding">
                   <div className="dropdown-menu dropdown-menu-custom dropdown-menu-end">
                     <div className="dropdown-header">
-                      <h6>Kevin Anderson</h6>
+                      <h6>Mahesh Salunkhe</h6>
                       <span>Web Designer</span>
                     </div>
                     <div className="dropdown-divider" />
