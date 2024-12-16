@@ -2,21 +2,20 @@ import React, { useState, useEffect } from "react";
 import "./SideBar.css";
 import Toggle from "../../Assets/navbar-logo.svg";
 import { Link } from "react-router-dom";
-import { TbLayoutDashboard } from "react-icons/tb";
+import { LuLayoutDashboard } from "react-icons/lu";
 import { PiSignOutBold } from "react-icons/pi";
 import Logo from "../../Assets/logo.svg";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa6";
 import { IoSearchOutline } from "react-icons/io5";
-import { FiMessageSquare } from "react-icons/fi";
 import Profile from "../../Assets/profile-img.png";
 import { BiMessageRounded } from "react-icons/bi";
-import { BsBank } from "react-icons/bs";
-import { SlUserFollowing } from "react-icons/sl";
+import { RiBankLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import * as demoAction from "../../Redux/Actions/DemoActions";
 import { useSelector } from "react-redux";
 import { HiOutlineBars3 } from "react-icons/hi2";
+import { MdOutlineCoPresent } from "react-icons/md";
 
 export default function SideBar() {
   const [menuButton, setmenuButton] = useState(false);
@@ -288,7 +287,7 @@ export default function SideBar() {
                   }}
                   className="nav_link active-1 datalink"
                 >
-                  <TbLayoutDashboard className="side-icons" />
+                  <LuLayoutDashboard className="side-icons" />
                   <span className="nav_name" id="content">
                     Dashboard
                   </span>
@@ -314,7 +313,7 @@ export default function SideBar() {
                     handleChangePage(i);
                   }}
                 >
-                  <BsBank className="side-icons" />
+                  <RiBankLine className="side-icons" />
                   <span className="nav_name">Account</span>
                 </Link>
               </div>
@@ -326,7 +325,7 @@ export default function SideBar() {
                     handleChangePage(i);
                   }}
                 >
-                  <SlUserFollowing className="side-icons" />
+                  <MdOutlineCoPresent className="side-icons" />
                   <span className="nav_name">Attendance</span>
                 </Link>
               </div>

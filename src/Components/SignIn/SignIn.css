@@ -28,6 +28,7 @@ a{
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
   
   justify-content: center;
 }
@@ -62,7 +63,7 @@ a{
 .signin-container-right {
   width: 130%;
   text-align: left;
-  color: white;
+  color: black;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -141,6 +142,7 @@ a{
 
 .heading{
   line-height: 20px;
+
 }
 .heading h3{
   margin: 0px;

@@ -97,12 +97,20 @@
 }
 .project-name {
     padding: 15px;
-    background-color: #313133;
     border-radius: 5px;
     height: 281px;
+    background: #fff;
+    /* background: linear-gradient(90deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
+    box-shadow: 9px 0px 116px -5px rgba(0,0,0,0.24);
+    -webkit-box-shadow: 9px 0px 116px -5px rgba(0,0,0,0.24);
+    -moz-box-shadow: 9px 0px 116px -5px rgba(0,0,0,0.24);
 }
-.projects p{
+.project-name h3{
+    font-weight: 700;
+}
+.projects p {
     margin: 4px 0;
+    font-weight: 600;
 }
 .progess {
     display: flex;
@@ -119,11 +127,22 @@
 
 .progress-bar {
     height: 8px;
-    background-color: #4caf50;
+    background-color: #19cd20;
     transition: width 0.3s ease;
     border-radius: 5px;
 }
-
+.progress-bar {
+    height: 8px;
+    background-color: #19cd20;
+    transition: width 0.3s ease;
+    border-radius: 5px;
+}
+.progress-bar {
+    height: 8px;
+    background-color: #19cd20;
+    transition: width 0.3s ease;
+    border-radius: 5px;
+}
 .project-details {
     display: flex;
     justify-content: flex-start;
@@ -140,6 +159,7 @@
 
 .min-dead p{
     color:rgb(19, 201, 19);
+
 }
 .no-of-days-1{
     color: #1F3BB3;
@@ -150,11 +170,12 @@
     font-weight: 600;
 }
 .no-of-days-3{
-    color: #c96c20;
+    color: #db9615;
     font-weight: 600;
 }
 .card-title{
     color: black;
+    font-weight: 600;
 }
 .card-title span{
     color: #d32424;
@@ -173,10 +194,14 @@
     justify-content: space-between;
     gap: 25px;
 }
+
 .card{
-    background-color: #313133;
-    border-radius: 5px;
-    color: white;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 9px 0px 116px -5px rgba(0,0,0,0.24);
+-webkit-box-shadow: 9px 0px 116px -5px rgba(0,0,0,0.24);
+-moz-box-shadow: 9px 0px 116px -5px rgba(0,0,0,0.24);
 }
 
 .apexcharts-xcrosshairs, .apexcharts-ycrosshairs {
@@ -186,10 +211,13 @@
 }
 
 .deadline {
-    background-color: #313133;
+    background-color: #FFF;
     padding: 20px;
     border-radius: 5px;
     width: 100%;
+    box-shadow: 9px 0px 116px -5px rgba(0,0,0,0.24);
+    -webkit-box-shadow: 9px 0px 116px -5px rgba(0,0,0,0.24);
+    -moz-box-shadow: 9px 0px 116px -5px rgba(0,0,0,0.24);
 }
 
 .card-component-1{
@@ -248,6 +276,7 @@
     align-items: center;
     background: transparent;
     margin-top: 25px;
+    border-bottom: 2px solid #d9d8d8;
 }
 .inner h4{
     font-weight: 600;
@@ -261,11 +290,12 @@
   .thisweek{
     background-color: #1F3BB3;
   }
-.table1{
+  .table1 {
     width: 100%;
-    margin-bottom: 1rem;
+    margin-top: 25px;
     vertical-align: top;
     height: 90%;
+    color: black;
 }
   .lastweek{
     background-color: #52CDFF;
@@ -312,26 +342,31 @@ button {
 }
 
 .datepicker {
-	width: 50%;
-	background-color: var(--c-bg-tertiary);
-	border-radius: 10px;
-	box-shadow: 0 0 2px 0 rgba(#000, .2), 0 5px 10px 0 rgba(#000, .1);
-	padding: 1rem;
+    width: 60%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 9px 0px 116px -5px rgba(0,0,0,0.24);
+    -webkit-box-shadow: 9px 0px 116px -5px rgba(0,0,0,0.24);
+    -moz-box-shadow: 9px 0px 116px -5px rgba(0,0,0,0.24);
 }
 .task-card{
     width: 50%;
+    background-color: #fff;
+    box-shadow: 9px 0px 116px -5px rgba(0,0,0,0.24);
+    -webkit-box-shadow: 9px 0px 116px -5px rgba(0,0,0,0.24);
+    -moz-box-shadow: 9px 0px 116px -5px rgba(0,0,0,0.24);
 }
 .datepicker-top {
 	margin-bottom: 1rem;
 }
 
 .btn-group {
-	display: flex;
-	flex-wrap: wrap;
-	margin-bottom: 1rem;
-	margin-top: -.5rem;
+    display: flex;
+    margin-bottom: 1rem;
+    margin-top: -.5rem;
+    justify-content: space-between;
 }
-
 .tag {
 	margin-right: .5rem;
 	margin-top: .5rem;
@@ -340,6 +375,7 @@ button {
 	border-radius: 10px;
 	padding: .5em .75em;
 	font-weight: 600;
+   
 }
 
 .month-selector {
@@ -349,15 +385,15 @@ button {
 }
 
 .arrow {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border: 0;
-	background-color:#FFF;
-	border-radius: 12px;
-	width: 2.5rem;
-	height: 2.5rem;
-	box-shadow: 0 0 2px 0 rgba(#000,.25), 0 0 10px 0 rgba(#000, .15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    background-color: #FFF;
+    border-radius: 12px;
+    width: 2.5rem;
+    height: 2.5rem;
+    box-shadow: 0 0 2px 0 rgba(#000,.25), 0 0 10px 0 rgba(#000, .15);
 }
 
 .month-name {
@@ -375,10 +411,10 @@ button {
 }
 
 .day {
-	color: var(--c-text-secondary);
-	font-size: .875em;
-	font-weight: 500;
-	justify-self: center;
+    color: #000000;
+    font-size: .875em;
+    font-weight: 500;
+    justify-self: center;
 }
 
 .date {
@@ -394,16 +430,16 @@ button {
 	border: 1px solid rgb(125, 125, 125);
 	background-color: transparent;
 	cursor: pointer;
-    color:  #FFFFFF;
+    color:  #000000;
 	&:focus {
-		outline: 0;
+		outline: 1;
 		color: var(--c-theme-primary);
-		border: 2px solid var(--c-theme-primary-accent);	
+		border: 1px solid #000000;	
 	}	
 }
 
 .faded {
-	color: rgb(125, 125, 125);
+    color: rgb(107 107 107);
 }
 
 .current-day {

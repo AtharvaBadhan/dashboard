@@ -52,9 +52,11 @@ export default function Dashboard() {
     chart: {
       type: "radialBar",
       height: 275,
+    
     },
     plotOptions: {
       radialBar: {
+        
         dataLabels: {
           name: {
             fontSize: "22px",
@@ -65,7 +67,7 @@ export default function Dashboard() {
           total: {
             show: true,
             label: "Total Progress",
-            color: "#ffffff",
+            color: "#000000",
             formatter: () => Math.round(totalProgress),
           },
         },
@@ -126,7 +128,7 @@ export default function Dashboard() {
         yaxis: {
           labels: {
             style: {
-              colors: "#ffffff", // Change x-axis label color
+              colors: "#000000", // Change x-axis label color
               fontSize: "12px", // Change font size
             },
           },
@@ -144,7 +146,7 @@ export default function Dashboard() {
           ],
           labels: {
             style: {
-              colors: "#ffffff", // Change x-axis label color
+              colors: "#000000", // Change x-axis label color
               fontSize: "12px", // Change font size
             },
           },
@@ -309,7 +311,7 @@ export default function Dashboard() {
                 </div>
               </div>
               <div className="card task-card">
-                <div className="filter">
+                {/* <div className="filter">
                   <a className="icon" href="#" data-bs-toggle="dropdown">
                     <BsThreeDots />
                   </a>
@@ -334,7 +336,7 @@ export default function Dashboard() {
                       </a>
                     </li>
                   </ul>
-                </div>
+                </div> */}
 
                 <div className="card-body">
                   <h5 className="card-title">
@@ -346,7 +348,7 @@ export default function Dashboard() {
             <div className="card h-100">
               <div className=" card-body ">
                 <h5 className="card-title">Upcoming Projects</h5>
-                <table className="table1 table-bordered">
+                <table className="table1">
                   <thead className='p-5'>
                     <tr>
                       <th scope="col">#</th>
@@ -384,13 +386,6 @@ export default function Dashboard() {
                       <td>HR</td>
                       <td>34 days</td>
                       <td>2012-06-11</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>Project 5</td>
-                      <td>Marketing</td>
-                      <td>47 days</td>
-                      <td>2011-04-19</td>
                     </tr>
                   </tbody>
                 </table>
