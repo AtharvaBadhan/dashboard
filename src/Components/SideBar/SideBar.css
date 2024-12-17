@@ -72,7 +72,7 @@ box-shadow: inset 28px 3px 46px -35px rgba(27,27,28,1); */
 }
 
 .nav {
-  height: 110%;
+  height: 100%;
   display: flex;
   overflow: hidden;
   align-items: flex-start;
@@ -97,11 +97,11 @@ box-shadow: inset 28px 3px 46px -35px rgba(27,27,28,1); */
   padding: 10px;
   color: white;
 }
-.nav_option :hover {
+/* .nav_option :hover {
   background-color: #1646e4;
   border-radius: 5px 50px 50px 5px;
   color: #fff;
-}
+} */
 
 
 .nav_logo {
@@ -114,9 +114,9 @@ box-shadow: inset 28px 3px 46px -35px rgba(27,27,28,1); */
 
 .logo-img {
   display: none;
-  width: 7%;
+  width: 10%;
   position: relative;
-  left: 50px;
+  left: 31px;
 }
 
 .active {
