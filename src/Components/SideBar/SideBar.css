@@ -155,6 +155,7 @@ box-shadow: inset 28px 3px 46px -35px rgba(27,27,28,1); */
 .show {
   left: 0;
   width: 200px;
+  transition: 0.5s;
 }
 
 .body-pd {

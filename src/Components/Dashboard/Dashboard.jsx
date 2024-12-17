@@ -396,9 +396,6 @@ export default function Dashboard() {
         <div className="col-lg-12 card-graph">
           <div className="card">
             <div className="filter">
-              <a className="icon" href="#" data-bs-toggle="dropdown">
-                <BsThreeDots />
-              </a>
               <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                 <li className="dropdown-header text-start">
                   <h6>Filter</h6>
